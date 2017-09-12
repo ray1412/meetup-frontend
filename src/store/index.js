@@ -10,15 +10,17 @@ export const store = new Vuex.Store({
 				imageUrl   : 'http://www.gbgindonesia.com/directory/img/education/binus_university-information_technology_international_education/1419884458product-6.jpg',
 				id         : 'asd',
 				title      : 'Meetup in Binus',
-				date       : '2017-07-10',
-				description: 'Meetup for Binusian'
+				date       : new Date(),
+				description: 'Meetup for Binusian',
+				location   : 'Binus'
 			},
 			{
 				imageUrl   : 'https://upload.wikimedia.org/wikipedia/commons/a/ac/FamilyMart_Yoshinoya_Jl_Bulungan_Jakarta_Selatan.JPG',
 				id         : 'def',
 				title      : 'Meetup in Bulungan',
-				date       : '2017-09-30',
-				description: 'Meetup for zzzzzzzz'
+				date       : new Date(),
+				description: 'Meetup for zzzzzzzz',
+				location   : 'Bulungan'
 			}
 		],
 		user: {
