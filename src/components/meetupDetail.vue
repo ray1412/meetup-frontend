@@ -9,7 +9,7 @@
 					<v-card-media :src="meetup.imageUrl" height="400px">
 					</v-card-media>
 					<v-card-text>
-						<div class="md-date">{{meetup.date}} - {{meetup.location}}</div>
+						<div class="md-date">{{meetup.date | date}} - {{meetup.location}}</div>
 						<div class="md-description">{{meetup.description}}</div>
 					</v-card-text>
 					<v-card-actions>

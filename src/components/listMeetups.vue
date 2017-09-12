@@ -18,7 +18,7 @@
 							 	<v-card-title primary-title>
 							 		<div>
 					                	<div class="meetup-title white--text mb-0">{{item.title}}</div>
-					                	<div class="meetup-date">{{item.date}}</div>
+					                	<div class="meetup-date">{{item.date | date}}</div>
 						                <div class="meetup-desc">{{item.description}}</div>
 					                </div>
 				              	</v-card-title>
@@ -35,7 +35,7 @@
 								<v-card-title primary-title class="pr-0 pl-0">
 							 		<div>
 					                	<div class="meetup-title white--text mb-0">{{item.title}}</div>
-					                	<div class="meetup-date">{{item.date}}</div>
+					                	<div class="meetup-date">{{item.date | date}}</div>
 						                <div class="meetup-desc">{{item.description}}</div>
 					                </div>
 				              	</v-card-title>
