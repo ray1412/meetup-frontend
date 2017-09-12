@@ -5,7 +5,7 @@
 				<v-card>
 					<v-card-text>
 						<v-container>
-							<form>
+							<form @submit.prevent="signUpUser">
 								<v-layout row>
 									<v-flex xs12>
 										<v-text-field 
@@ -64,12 +64,28 @@ export default {
 	computed: {
 		comparePassword(){
 			return this.password !== this.confirmPassword? 'Password do not match' : ''
+		},
+		user () {
+			return this.$store.getters.user
+		}
+	},
+	watch: {
+		user (value) {
+			if(value != null && value !== undefined)
+			{
+				this.$router.push('/')
+			}
 		}
 	},
 	methods : {
 		//Vuex
-		signUp(){
+		signUpUser(){
 			console.log()
+			var newUser = {
+				email: this.email,
+				password: this.password
+			}
+			this.$store.dispatch('signUp', newUser);
 		}
 	}
 
