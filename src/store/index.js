@@ -31,7 +31,6 @@ export const store = new Vuex.Store({
 	mutations: {
 		setLoadedMeetups(state,payload){
 			state.loadedMeetups = payload
-			console.log(state.loadedMeetups);
 		},
 		createMeetup (state, payload){
 			state.loadedMeetups.push(payload)
@@ -78,14 +77,13 @@ export const store = new Vuex.Store({
 			})
 		},
 		createMeetup ({commit, getters}, payload){
-			console.log(getters);
 			const meetup = {
-				title      : payload.title,
-				location   : payload.location,
-				imageUrl   : payload.imageUrl,
-				description: payload.description,
-				date       : payload.date.toISOString(),
-				creatorId  : getters.user.id
+			title      : payload.title,
+			location   : payload.location,
+			imageUrl   : payload.imageUrl,
+			description: payload.description,
+			date       : payload.date.toISOString(),
+			creatorId  : getters.user.id
 			}
 			// Reach firebase 
 			firebase.database().ref('meetups').push(meetup)
@@ -133,7 +131,6 @@ export const store = new Vuex.Store({
 							id: user.uid,
 							registeredMeetups : []
 					}
-					console.log(loggedUser);
 					commit('setUser', loggedUser)
 				}
 			)

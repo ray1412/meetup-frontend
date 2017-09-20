@@ -81,7 +81,6 @@ export default {
 	methods : {
 		//Vuex
 		signInUser(){
-			console.log('oi')
 			let login = {
 				email: this.email,
 				password: this.password

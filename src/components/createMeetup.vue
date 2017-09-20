@@ -122,15 +122,25 @@
 		},
 		methods : {
 			onCreateMeetup (){
-				const meetupData = {
+				console.log(this.$store.getters.user);
+				if(this.$store.getters.user == null)
+				{
+					alert('You need to login');
+					this.$router.push('/signin')
+				}
+				else
+				{
+					const meetupData = {
 					title      : this.title,
 					location   : this.location,
 					imageUrl   : this.imageUrl,
 					description: this.description,
 					date       : this.formattedDate
+					}
+					this.$store.dispatch('createMeetup',meetupData)
+					this.$router.push('/meetups')
 				}
-				this.$store.dispatch('createMeetup',meetupData)
-				this.$router.push('/meetups')
+				
 			}
 		}
 	}
