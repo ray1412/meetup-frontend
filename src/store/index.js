@@ -65,7 +65,7 @@ export const store = new Vuex.Store({
 						imageUrl   : obj[key].imageUrl,
 						description: obj[key].description,
 						date       : obj[key].date,
-						creatorID  : obj[key].creatorID
+						creatorId  : obj[key].creatorId
 					})
 				}
 				commit('setLoadedMeetups',meetups);
@@ -85,7 +85,7 @@ export const store = new Vuex.Store({
 				imageUrl   : payload.imageUrl,
 				description: payload.description,
 				date       : payload.date.toISOString(),
-				creatorID  : getters.user.id
+				creatorId  : getters.user.id
 			}
 			// Reach firebase 
 			firebase.database().ref('meetups').push(meetup)
@@ -147,7 +147,7 @@ export const store = new Vuex.Store({
 		},
 		autoSignIn({commit},payload){
 			const user = {
-				id : payload.id,
+				id : payload.uid,
 				registeredMeetups: []
 			}
 			commit('setUser',user)
