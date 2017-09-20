@@ -8,6 +8,12 @@
           </v-list-tile-action>
           <v-list-tile-content>{{item.title}}</v-list-tile-content>
         </v-list-tile>
+        <v-list-tile v-if="userIsAuthenticated" @click="logOut">
+          <v-list-tile-action>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>Logout</v-list-tile-content>
+        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar class="info" dark>
@@ -20,6 +26,10 @@
         <v-btn flat v-for="item in menuItems" :key="item.title" :to="item.link">
           <v-icon left>{{item.icon}}</v-icon>
           {{item.title}}
+        </v-btn>
+        <v-btn flat v-if="userIsAuthenticated" @click="logOut">
+          <v-icon left>exit_to_app</v-icon>
+          Logout
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -44,7 +54,7 @@
         ]
         if(this.userIsAuthenticated)
         {
-           menuItems: [
+           menuItems = [
            {icon: 'supervisor_account', title: 'View Meetups', link:'/meetups'},
            {icon: 'room', title: 'Organize Meetup', link:'/meetup/new'},
            {icon: 'person', title: 'Profile', link:'/profile'},
@@ -54,6 +64,11 @@
       },
       userIsAuthenticated (){
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      }
+    },
+    methods : {
+      logOut () {
+        this.$store.dispatch('logout')
       }
     }
   }
