@@ -7,10 +7,12 @@ import * as firebase from 'firebase'
 import router from './router'
 import { store } from './store'
 import DateFilter from './filters/date'
+import AlertCmp from './components/alert.vue'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
 Vue.filter('date', DateFilter)
+Vue.component('app-alert',AlertCmp)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -26,5 +28,11 @@ new Vue({
 		projectId    : "meetup-vuejs",
 		storageBucket: "meetup-vuejs.appspot.com",
   	})
+  	firebase.auth().onAuthStateChanged((user) => {
+  		if(user){
+  			this.$store.dispatch('autoSignIn', user)
+  		}
+  	})
+  	this.$store.dispatch('loadMeetups')
   }
 })
